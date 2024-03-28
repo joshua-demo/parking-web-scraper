@@ -1,4 +1,4 @@
-# Sparking Status
+# Spartan Spaces
 
 ### Team Name: The Droppers 
 **Joshua Demo** (joshua.demo@sjsu.edu) and **Steven Le** (steven.q.le@sjsu.edu)
