@@ -14,5 +14,46 @@ We'll first focus on web-scraping; we need to pull data from SJSU's existing par
 
 ## Technology Stack
 **Backend**: Python FastAPI server <br>
-**Frontend**: ReactJS application styled with Tailwind + DaisyUI <br>
-Additional technologies TBD
+**Frontend**: NextJS application styled with Tailwind + DaisyUI <br>
+
+## How to run Spartan Spaces
+- Clone this repository into a local directory: ```git clone https://github.com/joshua-demo/parking-web-scraper```
+
+### Backend Only
+1. From the root directory, create a virutal environment (to handle packages)
+
+    - Windows:
+   ```sh
+   python -m venv venv
+   ```
+    - MacOS/Linux:
+   ```sh
+   python3 -m venv venv
+   ```
+
+2. Activate virtual env
+
+   - Windows:
+
+   ```sh
+   .\venv\modules\Scripts\activate.bat
+   ```
+
+   - MacOS/Linux
+
+   ```sh
+   source venv/bin/activate
+   ```
+
+3. Install dependencies
+
+   ```sh
+   pip install -r ./server/requirements.txt
+   ```
+
+4. Run script in the project's root directory
+  - Command line:
+
+    ```sh
+    python ./server/server.py
+    ```
