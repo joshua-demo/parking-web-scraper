@@ -47,8 +47,12 @@ def update_garage_data():
             "Fullness": fullness
         })
 
+    timestamp_element = soup.find(class_="timestamp")
+    timestamp = timestamp_element.text.strip().split("Last updated ")[1].split(" Refresh")[0]
+    last_update_time = datetime.strptime(timestamp, "%Y-%m-%d %I:%M:%S %p")
+
     garage_data = {
-        "time": datetime.now(),
+        "time": last_update_time,
         "parking_data": parking_data
     }
 
@@ -58,9 +62,10 @@ def helper_thread():
     while True:
         try:
             update_garage_data()
-            print(garage_data)
+            print("Successfully updated garage data.")
+            # print(garage_data)
         except Exception:
-            logging.exception("Unable to update cache")
+            logging.exception("Unable to scrape data from SJSU's parking status page.")
         finally:
             time.sleep(5) # scrape periodically
 
