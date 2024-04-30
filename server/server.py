@@ -5,6 +5,7 @@ import threading
 import time
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import requests
 import urllib3
 import uvicorn
@@ -12,6 +13,15 @@ import uvicorn
 from bs4 import BeautifulSoup
 
 app = FastAPI()
+
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 url = "https://sjsuparkingstatus.sjsu.edu/"
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
