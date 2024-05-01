@@ -80,7 +80,7 @@ export default function Home() {
     <main className='h-screen'>
       <div className="bg-blue-600 pt-6 pb-2">
         <h1 className="text-center font-bold text-3xl text-white">
-          SJSU Parking Data
+          SPARTAN SPACES
         </h1>
       </div>
       {/* Gradient Bar */}
