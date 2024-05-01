@@ -58,23 +58,13 @@ function BarChart({ garageData }) {
 
 export default function Home() {
   const [parkingData, setParkingData] = useState({});
-  const [time, setTime] = useState(new Date(0));
 
-  // Manual clock
   useEffect(() => {
     const interval = setInterval(() => {
-      const newTime = new Date(time.getTime() + 1000);
-      setTime(newTime);
+      fetchData();
     }, 1000);
-
     return () => clearInterval(interval);
-  }, [time]);
-
-  // useEffect(() => {
-  //   if (time.getTime() % 300000 === 0) {
-  //     fetchData();
-  //   }
-  // })
+  }, []);
 
   const fetchData = async () => {
     const response = await fetch('http://localhost:8000/parking');
