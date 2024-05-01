@@ -13,6 +13,7 @@ import uvicorn
 from bs4 import BeautifulSoup
 
 app = FastAPI()
+garage_data = {}
 
 origins = ["*"]
 app.add_middleware(
@@ -68,7 +69,17 @@ def update_garage_data():
 
 # thread that periodically scrapes SJSU's parking status page
 def helper_thread():
-    print("Helper thread started.")  
+    print("Helper thread started.")
+    update_garage_data()
+    
+    epoch_time = 1714586945 # 11:09:05 AM May 1, 2024
+    current_time = int(time.time())
+    initial_delay = 240 - ((current_time - epoch_time ) % 240)
+
+    if initial_delay > 0:
+        print(f"Initial delay until next update: {initial_delay} seconds.")
+        time.sleep(initial_delay)
+
     while True:
         try:
             update_garage_data()
@@ -77,7 +88,7 @@ def helper_thread():
         except Exception:
             logging.exception("Unable to scrape data from SJSU's parking status page.")
         finally:
-            time.sleep(120) # scrape periodically
+            time.sleep(240)  # Scrape every 4 minutes
 
 if __name__ == 'server':
     helper = threading.Thread(target=helper_thread, daemon=True)
