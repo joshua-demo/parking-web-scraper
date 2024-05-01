@@ -77,7 +77,7 @@ def helper_thread():
         except Exception:
             logging.exception("Unable to scrape data from SJSU's parking status page.")
         finally:
-            time.sleep(5) # scrape periodically
+            time.sleep(120) # scrape periodically
 
 if __name__ == 'server':
     helper = threading.Thread(target=helper_thread, daemon=True)
