@@ -11,10 +11,10 @@ function BarChart({ garageData }) {
         label: 'Fullness Percentage',
         data: garageData.map(entry => parseInt(entry["Fullness"])),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -35,9 +35,15 @@ function BarChart({ garageData }) {
         min: 0,
         max: 100,
         ticks: {
+          color: 'white',
           callback: function(value) {
             return value + '%';
           }
+        }
+      },
+      x: {
+        ticks: {
+          color: 'white',
         }
       }
     },
@@ -47,14 +53,23 @@ function BarChart({ garageData }) {
         intersect: false,
       }
     },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white' 
+        }
+      },
+
+    },
   };
 
   return (
-    <div className="h-full w-full mt-8">
+    <div className="w-full h-full mt-8 ">
       <Bar data={data} options={options} />
     </div>
   );
 }
+
 
 export default function Home() {
   const [parkingData, setParkingData] = useState({});
@@ -77,24 +92,24 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='h-screen'>
-      <div className="bg-blue-600 pt-6 pb-2">
-        <h1 className="text-center font-bold text-3xl text-white">
+    <main className='h-screen bg-slate-700'>
+      <div className="pt-6 pb-2 bg-blue-600">
+        <h1 className="text-3xl font-bold text-center text-white">
           SPARTAN SPACES
         </h1>
       </div>
       {/* Gradient Bar */}
-      <div className="sjsu-gradientbar bg-gradient-to-r from-blue-500 via-yellow-400 to-blue-500 bg-no-repeat bg-cover">
+      <div className="bg-no-repeat bg-cover sjsu-gradientbar bg-gradient-to-r from-blue-500 via-yellow-400 to-blue-500">
         <div className="pt-2" />
       </div>
       {parkingData && (
-        <h3 className="text-center mt-4">
+        <h3 className="mt-4 text-center text-white/70">
           Last Updated {new Date(parkingData.time).toLocaleString()}
         </h3>
       )}
-      <div className='flex mx-auto p-10'>
+      <div className='flex mx-auto'>
         {parkingData.parking_data && (
-          <div className='h-[calc(100vh-200px)] w-screen'>
+          <div className='h-[calc(100vh-200px)] w-[calc(100vw-40px)] m-10'>
             <BarChart garageData={parkingData.parking_data} />
           </div>
         )}
