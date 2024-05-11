@@ -14,7 +14,7 @@ We'll first focus on web-scraping; we need to pull data from SJSU's existing par
 
 ## Technology Stack
 **Backend**: Python FastAPI server <br>
-**Frontend**: NextJS application styled with Tailwind + DaisyUI <br>
+**Frontend**: NextJS application styled with Tailwind + Chart JS <br>
 
 ## How to run Spartan Spaces
 - Clone this repository into a local directory: ```git clone https://github.com/joshua-demo/parking-web-scraper```
@@ -57,3 +57,26 @@ We'll first focus on web-scraping; we need to pull data from SJSU's existing par
     ```sh
     python ./server/server.py
     ```
+
+### Frontend
+1. From the root directory navigate to the frontend folder
+  - Command line:
+
+   ```sh
+   cd ./frontend
+   ```
+
+2. Install dependencies
+
+   ```sh
+   npm i
+   ```
+
+3. Run script in the project's frontend folder
+
+   ```sh
+   npm run dev
+   ```
+
+What it should look like
+![image](https://github.com/joshua-demo/parking-web-scraper/assets/116464215/ee5a05e5-0ece-4dee-9872-5a2817c48352)
